@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { CommonModule, NgFor } from '@angular/common'; 
@@ -21,8 +21,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TaskFormComponent } from './task-form/task-form.component';
-import { RouterModule, RouterOutlet } from '@angular/router';
-
+import { RouterModule } from '@angular/router';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @NgModule({ declarations: [
         AppComponent,
         TaskListComponent,
@@ -45,9 +45,11 @@ import { RouterModule, RouterOutlet } from '@angular/router';
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
-        BrowserModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatSlideToggleModule,
         RouterModule.forRoot(routes) 
-    ], 
+    ],  
     providers: [
         provideAnimationsAsync(),
         provideHttpClient(withInterceptorsFromDi())
