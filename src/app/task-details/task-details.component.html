@@ -1,1 +1,36 @@
-<p>task-details works!</p>
+<app-loading *ngIf="isLoading"></app-loading>
+<br>
+<div *ngIf="!isLoading" class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h5 class="card-title">{{ element.name }}</h5>
+        </div>
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-md-3">
+              <label for="code" class="form-label">Description:</label>
+              <p class="form-control-static">{{ element.description }}</p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label for="exampleInputEmail1" class="form-label">Créé le:</label>
+              <p class="form-control-static">{{ element.date_creation | date: 'dd/MM/yyyy' }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label for="exampleInputEmail1" class="form-label">Active:</label>
+              <p class="form-control-static">
+                <span *ngIf="element.is_completed" class="text-success">Oui</span>
+                <span *ngIf="!element.is_completed" class="text-danger">Non</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

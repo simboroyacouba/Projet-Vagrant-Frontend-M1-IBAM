@@ -21,6 +21,8 @@ declare var $: any;
 })
 export class TaskListComponent {
 
+  public dtOptions: any = {}
+
   public tableData1!: TableData;
   success='';
   alert='';
@@ -38,7 +40,7 @@ export class TaskListComponent {
     this.success='';
     this.alert='';
     this.loadData();  
-   
+     
   }
   loadData() {
     this.elements = [
@@ -132,3 +134,4 @@ export class TaskListComponent {
     });
   }
 }
+

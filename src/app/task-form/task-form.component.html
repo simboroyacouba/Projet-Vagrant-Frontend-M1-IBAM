@@ -1,1 +1,54 @@
-<p>task-form works!</p>
+<app-loading *ngIf="isLoading"></app-loading>
+
+<br>
+<div *ngIf="!isLoading" class="container">
+  <div *ngIf="success !== ''" class="alert alert-success" role="alert">
+    {{ success }}
+  </div>
+  <div *ngIf="alert !== ''" class="alert alert-danger" role="alert">
+    {{ alert }}
+  </div>
+
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h5 class="card-title">{{ titre }}</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmitForm()">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-group">
+                <label for="code">Nom</label>
+                <input type="text" class="form-control" placeholder="Nom" formControlName="name">
+              </div>
+            </div>
+          </div>
+          <div >
+            <div class="col-md-10">
+              <div class="form-group">
+                <label for="libelle">Description</label>
+                <textarea type="text" class="form-control" placeholder="Description" formControlName="description">
+                </textarea>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Actif</label><br>
+                <mat-slide-toggle formControlName="is_completed"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
