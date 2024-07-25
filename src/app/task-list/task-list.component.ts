@@ -42,57 +42,57 @@ export class TaskListComponent {
     this.loadData();  
      
   }
-  loadData() {
-    this.elements = [
-      {
-          "id": 1,
-          "name": "Task 1",
-          "description": "Description of task 1",
-          "is_completed": false,
-          "date_creation": new Date("2024-07-16T12:34:56Z"),
-      },
-      {
-          "id": 2,
-          "name": "Task 2",
-          "description": "Description of task 2",
-          "is_completed": true,
-          "date_creation": new Date("2024-07-15T09:21:45Z"),
-      }
-  ];
-    this.tableData1 = {
-      headerRow: [ 'Nom', 'Complète', 'date de création'],
-      libeleRow: [ 'name', 'is_completed', 'date_creation'],
-      dataRows: this.elements as Task[] 
-    };
-    $(document).ready(function() {
-      $('#example').DataTable();
-    });
-      this.isLoading= false;
-  }
   // loadData() {
-  //   this.isLoading = true;
-  //   this.success='';
-  //   this.alert='';
-
-  //   this.service.getAll().subscribe({
-  //     next:(data : Task[])=>{
-  //       this.elements = data;
-  //       this.tableData1 = {
-  //         headerRow: [ 'Nom', 'Complète', 'date de création'],
-  //         libeleRow: [ 'name', 'is_completed', 'date_creation'],
-  //         dataRows: data as Task[] 
-  //       };
-  //       $(document).ready(function() {
-  //         $('#example').DataTable();
-  //       });
-  //         this.isLoading= false;
+  //   this.elements = [
+  //     {
+  //         "id": 1,
+  //         "name": "Task 1",
+  //         "description": "Description of task 1",
+  //         "is_completed": false,
+  //         "date_creation": new Date("2024-07-16T12:34:56Z"),
   //     },
-  //     error:(error:any)=> {
-  //       this.alert = error.error.message;
-  //       this.isLoading= false;
+  //     {
+  //         "id": 2,
+  //         "name": "Task 2",
+  //         "description": "Description of task 2",
+  //         "is_completed": true,
+  //         "date_creation": new Date("2024-07-15T09:21:45Z"),
   //     }
+  // ];
+  //   this.tableData1 = {
+  //     headerRow: [ 'Nom', 'Complète', 'date de création'],
+  //     libeleRow: [ 'name', 'is_completed', 'date_creation'],
+  //     dataRows: this.elements as Task[] 
+  //   };
+  //   $(document).ready(function() {
+  //     $('#example').DataTable();
   //   });
+  //     this.isLoading= false;
   // }
+  loadData() {
+    this.isLoading = true;
+    this.success='';
+    this.alert='';
+
+    this.service.getAll().subscribe({
+      next:(data : Task[])=>{
+        this.elements = data;
+        this.tableData1 = {
+          headerRow: [ 'Nom', 'Complète', 'date de création'],
+          libeleRow: [ 'name', 'is_completed', 'date_creation'],
+          dataRows: data as Task[] 
+        };
+        $(document).ready(function() {
+          $('#example').DataTable();
+        });
+          this.isLoading= false;
+      },
+      error:(error:any)=> {
+        this.alert = error.error.message;
+        this.isLoading= false;
+      }
+    });
+  }
 
   ajouter(){
     this.router.navigate([environment.FRONTEND_ROUTES.ADD]);
