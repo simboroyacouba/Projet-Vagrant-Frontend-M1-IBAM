@@ -19,7 +19,8 @@ export class TaskDetailsComponent  implements OnInit {
     "name": "Task 2",
     "description": "Description of task 2",
     "is_completed": true,
-    "date_creation": new Date("2024-07-15T09:21:45Z"),
+    "date_creation": "2024-07-15T09:21:45Z",
+    "date_modification": "2024-07-15T09:21:45Z",
   }
   
   constructor(
@@ -35,26 +36,26 @@ export class TaskDetailsComponent  implements OnInit {
     }
   }
 
-  getDetail(id: number){
-    this.isLoading = true;
-    
-        this.element = this.example;
-        this.isLoading = false;
-      
-  }
- 
   // getDetail(id: number){
   //   this.isLoading = true;
-  //   this.service.getById(id).subscribe({
-  //     next:(data)  =>{
-        
-  //       this.element = data;
+    
+  //       this.element = this.example;
   //       this.isLoading = false;
-  //     },
-  //     error: (error: any) => {
-  //     }
-  //   });
+      
   // }
+ 
+  getDetail(id: number){
+    this.isLoading = true;
+    this.service.getById(id).subscribe({
+      next:(data)  =>{
+        
+        this.element = data;
+        this.isLoading = false;
+      },
+      error: (error: any) => {
+      }
+    });
+  }
 
 
 }

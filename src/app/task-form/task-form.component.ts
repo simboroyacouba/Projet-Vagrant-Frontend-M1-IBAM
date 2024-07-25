@@ -58,6 +58,7 @@ export class TaskFormComponent implements OnInit {
         this.form.get('name')!.value,
         this.form.get('is_completed')!.value!,
         this.form.get('description')!.value!,
+        null,
         null)
 
       if(this.idDataToUpdate != undefined){
@@ -104,30 +105,30 @@ export class TaskFormComponent implements OnInit {
     })
   }
 
-  getDetail(id: number){
-    this.isLoading = true;
-    
-    this.form.patchValue({
-      name: "Task 2",
-      description: "Description of task 2",
-      is_completed: true,
-    });
-        this.isLoading = false;
-      
-  }
   // getDetail(id: number){
   //   this.isLoading = true;
-  //   this.service.getById(id).subscribe({
-  //     next:(data)  =>{
-  //       this.titre = 'Modifier "'+data.name+'"';
-        
-  //       this.form.patchValue(data);
-  //       this.isLoading = false;
-  //     },
-  //     error: (error: any) => {
-  //     }
+    
+  //   this.form.patchValue({
+  //     name: "Task 2",
+  //     description: "Description of task 2",
+  //     is_completed: true,
   //   });
+  //       this.isLoading = false;
+      
   // }
+  getDetail(id: number){
+    this.isLoading = true;
+    this.service.getById(id).subscribe({
+      next:(data)  =>{
+        this.titre = 'Modifier "'+data.name+'"';
+        
+        this.form.patchValue(data);
+        this.isLoading = false;
+      },
+      error: (error: any) => {
+      }
+    });
+  }
 
 
 }
