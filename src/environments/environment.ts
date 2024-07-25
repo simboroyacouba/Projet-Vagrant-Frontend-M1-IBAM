@@ -6,7 +6,7 @@ export const environment = {
   apiUrl: baseUrl,
   production: true,
   PUBLIC: {
-    TASK_API: baseUrl,
+    TASK_API: baseUrl+"/tasks",
   },
  
   FRONTEND_ROUTES: {
